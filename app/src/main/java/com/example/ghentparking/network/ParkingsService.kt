@@ -1,6 +1,6 @@
 package com.example.ghentparking.network
 
-import com.example.ghentparking.ui.parkings.ParkingsResponse
+import com.example.ghentparking.ui.parkings.Parking
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -16,16 +16,16 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .addCallAdapterFactory(CoroutineCallAdapterFactory())
-    .baseUrl("https://datatank.stad.gent/4/mobiliteit/bezettingparkingsrealtime.json/")
+    .baseUrl("https://datatank.stad.gent/4/mobiliteit/")
     .build()
 
 interface ParkingsService {
 
-    @GET()
+    @GET("bezettingparkingsrealtime.json")
     fun getParkings():
-            Deferred<ParkingsResponse>
+            Deferred<List<Parking>>
 }
 
-object ParkingsAPI{
-    val retrofitService:ParkingsService by lazy{ retrofit.create(ParkingsService::class.java)}
+object ParkingsAPI {
+    val retrofitService: ParkingsService by lazy { retrofit.create(ParkingsService::class.java) }
 }

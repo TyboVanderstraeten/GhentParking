@@ -9,7 +9,7 @@ import com.example.ghentparking.data.parkings.ParkingsDao
 
 @Database(
     entities = [DatabaseParking::class],
-    version = 2,
+    version = 4,
     exportSchema = false
 )
 abstract class ParkingsDatabase : RoomDatabase() {

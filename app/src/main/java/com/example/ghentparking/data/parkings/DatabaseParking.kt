@@ -12,8 +12,8 @@ data class DatabaseParking(
     val id:Int,
     val name:String?,
     val description:String?,
-    val latitude:Int?,
-    val longitude:Int?,
+    val latitude:Double?,
+    val longitude:Double?,
     val address:String?,
     val contactInfo:String?,
     @Embedded
