@@ -17,7 +17,7 @@ data class DatabaseParking(
     val address:String?,
     val contactInfo:String?,
     @Embedded
-    val status: ParkingStatus?
+    val parkingStatus: ParkingStatus?
 )
 
 fun List<DatabaseParking>.asDomainModel():List<Parking>{
@@ -30,7 +30,7 @@ fun List<DatabaseParking>.asDomainModel():List<Parking>{
             it.longitude,
             it.address,
             it.contactInfo,
-            it.status
+            it.parkingStatus
         )
     }
 }

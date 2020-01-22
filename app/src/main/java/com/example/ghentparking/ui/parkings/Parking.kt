@@ -10,7 +10,7 @@ data class Parking(
     val longitude: Double?,
     val address: String?,
     val contactInfo: String?,
-    val status: ParkingStatus?
+    val parkingStatus: ParkingStatus?
 )
 
 fun Parking.asDatabaseModel(): DatabaseParking {
@@ -22,6 +22,10 @@ fun Parking.asDatabaseModel(): DatabaseParking {
         this.longitude,
         this.address,
         this.contactInfo,
-        this.status
+        this.parkingStatus
     )
+}
+
+fun convertParkingToDatabaseParking(parkings: List<Parking>): Array<DatabaseParking> {
+    return parkings.map { p -> p.asDatabaseModel() }.toTypedArray()
 }
