@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface ParkingsDao {
 
-    @Query("SELECT * FROM parking")
+    @Query("SELECT * FROM parking ORDER BY name")
     fun getParkings():LiveData<List<DatabaseParking>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
